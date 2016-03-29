@@ -1,0 +1,45 @@
+;;; .arrived  -*- mode: emacs-lisp; coding: iso-2022-7bit -*-
+;; This file is generated automatically by emacs-w3m v1.4.4.
+
+(("http://www.google.co.jp/search?ie=Shift_JIS&hl=ja&source=hp&q=%90%b0%93V%82%cc%96%c0%82%a2%83N%83W%83%89&btnG=Google+%8c%9f%8d%f5&gbv=1"
+  "晴天?^[ぎ1^[離V^[㉙@^[ぢいクジラ - Google 検索"
+  nil
+  (21439 21706 683874)
+  nil
+  nil)
+ ("http://google.com"
+  nil
+  nil
+  (21439 21649 647007)
+  nil
+  nil)
+ ("https://duckduckgo.com"
+  nil
+  nil
+  (21439 21595 890095)
+  nil
+  nil)
+ ("http://www.google.com/url?q=http://www.ep.sci.hokudai.ac.jp/~mkuriki/&sa=U&ei=KMa8U4zsNs7d8AX0qoHoAw&ved=0CBcQFjAA&usg=AFQjCNGi6JU11g-EWRnGxkKen4tkKr-snw"
+  nil
+  (21405 7562)
+  (21436 50776 39412)
+  nil
+  nil)
+ ("http://www.google.com/search?q=%91%ba%8b%b4%8b%86%97%9d%8a%ee&hl=ja&lr=lang_ja&ie=Shift_JIS"
+  "村橋究理基 - Google 検索"
+  nil
+  (21436 50724 696061)
+  nil
+  nil)
+ ("http://google.com/"
+  nil
+  nil
+  (21436 50683 73294)
+  nil
+  nil)
+ ("http://www.google.com/search?q=psg&hl=ja&lr=lang_ja&ie=Shift_JIS"
+  "psg - Google 検索"
+  nil
+  (21408 3977 545936)
+  nil
+  nil))

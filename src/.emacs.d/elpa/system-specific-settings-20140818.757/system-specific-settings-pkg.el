@@ -1,0 +1,1 @@
+(define-package "system-specific-settings" "20140818.757" "Apply settings only on certain systems" 'nil :url "https://github.com/DarwinAwardWinner/emacs-system-specific-settings" :keywords '("configuration"))

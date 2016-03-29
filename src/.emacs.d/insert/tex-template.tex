@@ -1,0 +1,78 @@
+\documentclass[a4j,12pt]{jreport}
+%\usepackage{graphicx}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{Dennou6}
+\usepackage{times}
+\usepackage{url}
+\usepackage{framed}
+\pagestyle{Dmyheadings}
+
+%\setlength{\parskip}{2ex}
+%\setcounter{chapter}{8}
+%\setcounter{section}{1}
+%\setcounter{subsection}{0}
+%\setcounter{figure}{2}
+%\setcounter{table}{0}
+%\setcounter{page}{604}   %右上のページナンバー
+%\setcounter{equation}{20}
+
+\makeatletter % 再定義する際に必要. documentclass の後ろに書く必要がある.
+\renewcommand{\chapter}{%
+\thispagestyle{jpl@in}%
+\global\@topnum\z@
+\@afterindenttrue
+\secdef\@chapter\@schapter}
+% chapter の直前で改行しないように設定.
+\makeatother
+%\def\thesecion{\arabic{chapter}.\arabic{section}}
+\def\thesection{\arabic{chapter}.\arabic{section}}
+\def\thesubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\def\theequation{\arabic{chapter}.\arabic{equation}}
+\def\thepage{\arabic{page}} % 数字
+%\def\thepage{\roman{page}} % ローマ数字
+\def\thetable{\arabic{chapter}.\arabic{section}.\arabic{table}}
+\def\thefootnote{\arabic{footnote})}
+\def\thefigure{\arabic{chapter}.\arabic{figure}}
+%-------- Vallis 用ページ数指定マクロ -------------------
+\newcounter{pagemax} % ページ数の最大値用カウンタ
+\newcounter{subpage} % ページ数が増えたとき用カウンタ
+\def\thepage{
+	\setcounter{pagemax}{606} % !! ページ数の上限を指定 !!
+	\addtocounter{pagemax}{1}
+	\ifnum\arabic{page}<\arabic{pagemax} % 最大ページ数を超えないとき
+		\arabic{page}
+	\else                                              % 最大ページ数を超えたとき
+		\addtocounter{pagemax}{-1}
+		\setcounter{subpage}{-\arabic{pagemax}}
+		\addtocounter{subpage}{\value{page}} 
+		\arabic{pagemax}-\arabic{subpage}
+	\fi
+}
+%-------- Vallis 用ページ数指定マクロ終わり ---------------
+% Vallis では, 虚数単位はローマン体らしい. ひどくめんどい
+\newcommand{\iu}{\mathrm{i}}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% eqnarray で改ページを許容する
+\allowdisplaybreaks
+
+% Lagrange 微分
+\def\DLag#1#2{\frac{D #1}{D #2}}
+%数式中のフォント \mathpzc を使う
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+\Dauthor{増田和孝}
+%\Ddate{2014 年 5 月 14 日}
+\Dtitle{Vallis (2006)}
+%\Dfile{vallis\_0356-20120517.tex}
+\markright{}
+
+\begin{document}
+
+\end{document}

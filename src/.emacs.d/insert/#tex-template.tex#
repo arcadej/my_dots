@@ -1,0 +1,185 @@
+\documentclass[a4j,12pt]{jreport}
+%\usepackage{graphicx}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{Dennou6}
+\usepackage{times}
+\usepackage{url}
+\usepackage{framed}
+\pagestyle{Dmyheadings}
+
+\setlength{\parskip}{2ex}
+\setcounter{chapter}{8}
+\setcounter{section}{1}
+\setcounter{subsection}{0}
+\setcounter{figure}{2}
+%\setcounter{table}{0}
+\setcounter{page}{604}   %右上のページナンバー
+\setcounter{equation}{20}
+
+\makeatletter % 再定義する際に必要. documentclass の後ろに書く必要がある.
+\renewcommand{\chapter}{%
+\thispagestyle{jpl@in}%
+\global\@topnum\z@
+\@afterindenttrue
+\secdef\@chapter\@schapter}
+% chapter の直前で改行しないように設定.
+\makeatother
+%\def\thesecion{\arabic{chapter}.\arabic{section}}
+\def\thesection{\arabic{chapter}.\arabic{section}}
+\def\thesubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\def\theequation{\arabic{chapter}.\arabic{equation}}
+\def\thepage{\arabic{page}} % 数字
+%\def\thepage{\roman{page}} % ローマ数字
+\def\thetable{\arabic{chapter}.\arabic{section}.\arabic{table}}
+\def\thefootnote{\arabic{footnote})}
+\def\thefigure{\arabic{chapter}.\arabic{figure}}
+%-------- Vallis 用ページ数指定マクロ -------------------
+\newcounter{pagemax} % ページ数の最大値用カウンタ
+\newcounter{subpage} % ページ数が増えたとき用カウンタ
+\def\thepage{
+	\setcounter{pagemax}{606} % !! ページ数の上限を指定 !!
+	\addtocounter{pagemax}{1}
+	\ifnum\arabic{page}<\arabic{pagemax} % 最大ページ数を超えないとき
+		\arabic{page}
+	\else                                              % 最大ページ数を超えたとき
+		\addtocounter{pagemax}{-1}
+		\setcounter{subpage}{-\arabic{pagemax}}
+		\addtocounter{subpage}{\value{page}} 
+		\arabic{pagemax}-\arabic{subpage}
+	\fi
+}
+%-------- Vallis 用ページ数指定マクロ終わり ---------------
+% Vallis では, 虚数単位はローマン体らしい. ひどくめんどい
+\newcommand{\iu}{\mathrm{i}}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% eqnarray で改ページを許容する
+\allowdisplaybreaks
+
+% Lagrange 微分
+\def\DLag#1#2{\frac{D #1}{D #2}}
+%数式中のフォント \mathpzc を使う
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+\Dauthor{}
+\Ddate{}
+\Dtitle{is (2006)}
+%\Dfile{vallis\_0356-20120517.tex}
+\markright{8.2 コルモゴロフの理論}
+
+\begin{document}
+関数$g $はもちろん強制の個々の性質に依存している. ここで, 局所仮説の本質はエネルギーフラックスが$\mathpzc{E}$と$k$のみによる
+ということである. 慣性領域のとあるスケールに着目した場合, それより小さなスケールに輸送されるエネルギーフラックスは, 着目している領域
+と同程度のスケールの領域で起こっている過程にのみ依存するものである. これは着目している領域では強制がどのように起こっているかということの詳細は失われて
+いて, かつ粘性の影響はまだ現れてこないことを表している. またはそれと等価ではあるが, 
+エネルギースペクトルはエネルギーフラックス$\varepsilon $とそれ自身の波数のみの関数である\footnote{
+逆関数を定義できるかわからないので, この時点では断言できないものと思われる. }. 
+それゆえエネルギースペクトルの詳細は
+以下のような形をとる. 
+\begin{align}
+\mathpzc{E}(k) &= g(\varepsilon , k )
+\end{align}
+ここで関数$g$ は普遍性を持っていると仮定し, どのような乱流に対しても同じ関数形をしている. 
+関数$g$ の式を得るために次元解析をしてみる(下のボックスを参照). 
+
+%------------箱------------------------------
+\begin{itembox}[c]{次元とコルモゴロフ・スペクトルの関係}
+	\begin{tabular}{ll}
+	{\bf 物理量} 							 & {\bf 次元} \\
+	波数, $k$ 								 & $1 / L$\\
+	単位体積あたりのエネルギー, $E$  & $U^2 = L^2/ T^2$ \\
+	エネルギースペクトル, $\mathpzc{E}(k)$		 &  $EL = L^3/T^2$ \\
+	エネルギーフラックス, $\varepsilon$    & $E/T = L^2/T^3$
+	\end{tabular}
+
+
+もし$\mathpzc{E} = f(\varepsilon ,k)$であらわされるとするならば, エネルギースペクトルの関係は次元解析的に以下のような
+関係が得られる. 
+\begin{align*}
+\mathpzc{E} = \mathpzc{K} \varepsilon ^{2/3} k^{-3/5}. 
+\end{align*}
+ここで$\mathpzc{K}$ は無次元の定数である. 
+\end{itembox}
+%----------箱終わり---------------------------
+式(8.21)の左辺は$L^3/T^2$の次元を持つ. 
+これは次元解析なので, $\mathpzc{E} = \varepsilon ^p k^q$と表されるとする. 時間依存性のみを考えると, $k $は
+時間によらないので, $T^{-2}$は$\varepsilon $のみで表現される. つまり, 式(8.21)と, 
+その次元は以下のようにあらわされるに違いない. 
+\begin{subequations}
+\begin{align}
+\mathpzc{E}(k) &= \varepsilon ^{2/3} g ^{\dag}(k), \\
+\frac{L^3}{T^2} &\sim \frac{L^{4/3} }{T^2} g^{\dag }(k).  
+\end{align}
+\end{subequations}
+ここで, $g^{\dag}(k)$は$k$のみの関数である. 
+明らかに$g^{\dag}(k)$は$L^{5/3}$の次元を持たなければならない. ここまでの物理的な過程が正しければ, 関数は以下のような
+関係を持たなければならない. 
+\begin{align}
+\mathpzc{E}(k) &= \mathpzc{K} \varepsilon ^{2/3} k^{-5/3}
+\Deqlab{8.23}
+\end{align}
+これは有名なコルモゴロフの $-5/3$乗スペクトルで, 乱流理論の定礎として位置づけられている. 
+この模式図は図8.3 に, この実験結果は図8.4 にしめす. この
+パラメータ$\mathpzc{K}$は無次元定数で理論からは導くことができない. この値はコルモゴロフ定数として知られており, 実験から
+$1.5$と与えられている\footnote{
+{\bf 原文 p371 脚注5: } Kolmogorov (1941)は式(8.23)と等価なものを
+本文とは若干異なる方法で導き出した. その際彼は, 波数空間ではなく実空間における長さを利用し. longitudinal structure function $D(r) \equiv \<[u _l (x + r ) - u _l(x ) ] ^2 \> \sim r^{2/3}$
+を用いて導いた. 波数空間における記述を行ったのは, Obukhov (1941) である. 彼は$\mathpzc{E}(k) \sim k^{-5/3}$をはじめて得た. 
+コルモゴロフの記述はより一般的なものとみなされており, $5/3$乗スペクトルの形には彼の名前を冠している. しかししばしばコルモゴロフ・オブコフの$5/3$乗スペクトルと呼ばれることもある. 
+}. 
+%
+%
+%図8.3 
+\begin{figure}[]
+\begin{center}
+\includegraphics[width=15cm]{fig8-3.ps}
+\caption{コルモゴロフの理論に基づく三次元乱流のエネルギースペクトルの模式図. エネルギーはある注入率$\varepsilon $で与えられる. そのエネルギーはより小さなスケールへ
+受け渡され, 最終的には粘性によって消散される. エネルギー注入スケールより大きなスケールに系統的なエネルギー輸送は行われない. 
+なのでエネルギー注入スケールより大きな領域ではエネルギースペクトルの値は小さくなっていく. 
+}
+\end{center}
+\end{figure}
+%
+%
+% 図8.4
+\begin{figure}[]
+\begin{center}
+\includegraphics[width=15cm]{fig8-4.ps}
+\caption{プリンストン大学のスーパーパイプ(Princeton Super facility) でのいくつかの実験で計測された三次元乱流のエネルギースペクトル\protect \footnotemark[3] . 外側の座標軸によって描かれたスペクトルは$10^6$までの異なる
+レイノルズ数から得られた数多くの実験結果から得られたものである. ただしスペクトルの絶対値においては適当な方法でスケーリングされている. 
+波数が大きなところでは$-5/3 $乗によく乗っている. 一方, 波数の小さなところでは, 渦がパイプの境界の影響を受けており, それゆえスペクトルの傾きは若干小さくなっている. 
+内側の座標軸にそってかかれたスペクトルは, レイノルズ数$10^6$の実験で得られたパイプの中心におけるスペクトルを示している. 
+}
+\end{center}
+\end{figure}
+%
+\footnotetext[3]{{\bf 原文 p.371 脚注6: } この結果はR. Zhao によって得られた. } 
+
+式(8.23)と等価なものを, 恐らく若干より直感的に導出する方法は渦によって流れが一周する時間$\tau _k$を用いることである. 
+$\tau _k$は長さスケール$1/k$の渦を速度$v_k$で一周するときにかかる時間である. ここで, 
+$v_k$はスケール$k$における速度スケールを表すものである. 
+次元解析から$v_k = [\mathpzc{E}(k) k]^{1/2}$と表される. よって
+\begin{align}
+\tau_{k} = \left[k^3 \mathpzc{E}(k) \right] ^{-1/2}.
+\end{align}
+またコルモゴロフの仮定は
+\begin{align}
+\varepsilon \sim \frac{v^2_k }{\tau _k } = \frac{k \mathpzc{E}(k)}{\tau_k} .  
+\end{align}
+と等価である. 
+ここで, $\varepsilon $が定数であることを要求すると, 式(8.24)と式(8.25)から式(8.23)が導かれる. 
+\subsection*{粘性のスケールとエネルギーの消散}
+ある程度小さなスケールにおいては粘性が重要になっていくと考えるべきだ. それゆえ前節で作り上げてきたスケーリング理論は成り立たなく
+なるだろう. 慣性領域では摩擦は重要ではない. なぜなら摩擦が重要となる時間スケールが非常に大きくなってしまい, 力学的効果が卓越しているからである. 
+運動方程式において, 粘性項は$\nu \nabla ^2 u $である. 長さスケールが$k^{-1}$における粘性もしくは消散の時間スケール$\tau^{\nu } _{k}$は
+\begin{align}
+\tau^{\nu}_k \sim \frac{1}{k^2 \nu} .
+\end{align}
+さらに粘性の時間スケールは長さスケールが小さくなるにつれて減少する. 
+\end{document}

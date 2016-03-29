@@ -1,0 +1,19 @@
+#
+# Folder definition file
+# This file is generated automatically by Wanderlust/2.10.1 (Watching The Wheels).
+#
+# If you edit this file by hand, be sure that comment lines
+# will be washed out by wl-fldmgr.
+#
+%#mhinbox:masuda/masuda@ep.sci.hokudai.ac.jp! "受信箱"
+%inbox  "Inbox"
+%gfdlab	"gfdlab"
+%rsaloon	"rsaloon"
+%epnetfan	"epnetfan"
+%SCC	"SCC"
+%Sent   "送信済み"
+%Trash  "ゴミ箱"
+%Junk   "迷惑メール"
++draft  "下書き"
+
+# petname definition (access group, folder in access group)

@@ -1,0 +1,11 @@
+(setq user-env-table '(
+("subequations")
+("cases")
+("case")
+("align")
+))
+
+(setq user-section-table '(
+("Deqlab")
+("Deqref")
+))

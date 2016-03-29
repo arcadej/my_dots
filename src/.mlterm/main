@@ -1,0 +1,10 @@
+fontsize = 16
+scrollbar_view_name = sample3
+mod_meta_key = alt
+mod_meta_mode = esc
+bg_color = black
+sb_fg_color = gray
+sb_bg_color = lightgray
+scrollbar_mode = right
+brightness = 100
+fg_color = white

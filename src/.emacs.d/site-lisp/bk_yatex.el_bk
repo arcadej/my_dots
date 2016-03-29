@@ -1,0 +1,23 @@
+(setq YaTeX-default-documentclass "jsarticle"
+
+tex-command "platex -kanji=utf8"
+
+dvi2-command "pxdvi -geo +0+0 -s 4"
+
+makeindex-command "mendex -E"
+
+dviprint-command-format "dvipdfmx -v -p a4 %s"
+
+YaTeX-template-file "/home/masuda/skel/template.tex"
+
+YaTeX-kanji-code 4 ; utf-8 )
+
+;; YaTeX hook (add-hook "yatex-mode-hook
+
+(lambda () (require `skk)
+
+(setq skk-kutouten-type 'en);;YaTeX ??????????????
+
+;;(auto-fill-mode -1);;???????off????
+
+))

@@ -1,0 +1,8 @@
+;; emacs-w3m でブラウジングするための設定
+
+;; まずホーム画面の設定
+(setq w3m-home-page "https://duckduckgo.com")
+;; ブックマークを保存するディレクトリ
+(setq w3m-bookmark-file "~/.w3m/bookmark.html")
+(setq w3m-search-default-engine "duckduckgo")
+(setq w3m-default-display-inline-images t )
