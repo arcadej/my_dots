@@ -1,11 +1,14 @@
 #!/bin/sh
 
-# 環境変数設定
-HOME=$HOME/tmp
-MY_DOTS_ROOT="../"
+# 変数設定
+#HOME=$HOME/tmp
+MY_DOTS_ROOT=`echo $(cd $(dirname $0)/..;pwd)`
 
-# バージョンチェック入れるよ
+# バージョンチェック入れるよきっと
 
-# コメント
-ln -s $MY_DOTS_ROOT/src/.* $HOME
-ln -s $MY_DOTS_ROOT/src/awesome $HOME/.config/
+# ディレクトリ生成
+mkdir -p $HOME/.config
+
+# リンクをはる。
+ln -sf $MY_DOTS_ROOT/src/.* $HOME
+ln -sf $MY_DOTS_ROOT/src/awesome $HOME/.config/
