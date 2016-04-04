@@ -96,20 +96,20 @@
 ;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;;;
 ;;; @ language - input method                                       ;;;
 ;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;;;
+(when-system-type-match 'cygwin
+  ;; モードラインの表示文字列
+  (setq-default w32-ime-mode-line-state-indicator "[Aa] ")
+  (setq w32-ime-mode-line-state-indicator-list '("[Aa]" "[あ]" "[Aa]"))
 
-;; モードラインの表示文字列
-(setq-default w32-ime-mode-line-state-indicator "[Aa] ")
-(setq w32-ime-mode-line-state-indicator-list '("[Aa]" "[あ]" "[Aa]"))
+  ;; IME初期化
+  (w32-ime-initialize)
 
-;; IME初期化
-(w32-ime-initialize)
+  ;; デフォルトIME
+  (setq default-input-method "W32-IME")
 
-;; デフォルトIME
-(setq default-input-method "W32-IME")
-
-;; IME変更
-(global-set-key (kbd "C-\\") 'toggle-input-method)
-
+  ;; IME変更
+  (global-set-key (kbd "C-\\") 'toggle-input-method)
+)
 ;; 漢字/変換キー入力時のエラーメッセージ抑止
 (global-set-key (kbd "<M-kanji>") 'ignore)
 (global-set-key (kbd "<kanji>") 'ignore)
@@ -809,8 +809,30 @@
 (setq org-log-done 'time)
 
 ;; Taskjuggler
-(require 'org-taskjuggler)
-
+(require 'ox-taskjuggler)
+;;;; New function
+;;(defun org-taksjuggler-get-random-id ()
+;;  (concat "id" (number-to-string (random 100000000))))
+;; 
+;; 
+;;(defun org-taskjuggler-get-unique-id (item unipue-ids)
+;;  "Return a unique id for an ITEM which can be a task or a resource.
+;;The id is derived from the headline and made unique against
+;;UNIQUE-IDS. if the first part of the headline is not unique try to add
+;;more parts of the headline or finally add more underscore characters (\"_\")."
+;;  (let* (
+;;         (task-id (cdr (assoc "task_id" item)))
+;;         (headline (cdr (assoc "headline" item)))
+;;         (parts (split-string headline))
+;;         (id (let
+;;                 potential-id (org-taskjuggler-clean-id (downcase (pop parts)))))
+;;         (cond
+;;          (task-id task-id)
+;;          ((string-match "^_+$" potential-id) (org-taskjuggler-get-random-id
+;;                                               (t potential-id)))))
+;;    (while (member id unique-ids)
+;;      (setq id (org-taskjuggler-get-random-id)))
+;;    id))
 ;; org-src-syntax
 (setq org-src-fontify-natively t)
 
